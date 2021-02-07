@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t andervanse/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true andervanse/docker-react npm run test -- --coverage
